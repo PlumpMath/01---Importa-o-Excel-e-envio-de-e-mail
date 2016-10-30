@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "ImportExcel";
+}
+
+<h2>ImportExcel</h2>
+<nav class="navbar navbar-default actionbar">
+    <div class="container-fluid">
+        <div class="navbar-collapse collapse" id="navbar" aria-expanded="false">
+            <ul class="nav navbar-nav">
+
+                <li>
+                    <a href="#" onclick="javascript: $('#formImport').submit();">
+                        <i class="glyphicon glyphicon-envelope"></i> Enviar para os gerentes
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<form id="formImport" disablevalidator name="FormModalBulkLoad" enctype="multipart/form-data" action="@Url.Action("LoadFile", "ImportExcel")" method="post">
+
+    <div id="ErrorDiv">
+
+    </div>
+
+
+    <div class="well">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="FILE" class="control-label">Planilha de Controle</label>
+                    <input type="file" id="FILE1" name="uploadFILE1" data-file-extensions=".xls,.xlsx" value="" data-val="true"
+                           data-val-required="Selecione um arquivo!"
+                           data-error="Selecione um arquivo"
+                           aria-required="true" aria-describedby="FILE-error" />
+                    <span class="text-danger field-validation-error" data-valmsg-for="FILE1" data-valmsg-replace="true"></span>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="FILE" class="control-label">Diretório dos Produtos Finais</label>
+                    <input type="text" id="PATHFILES" maxlength="250" class="form-control" />
+                    <span class="text-danger field-validation-error" data-valmsg-for="FOLDER" data-valmsg-replace="true"></span>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+
+<br />
+<br />
+@if (ViewBag.msgErro != "")
+{
+    <h2 style="color:red">@ViewBag.Error</h2>
+}
+@if (ViewBag.retornoEnvio != "")
+{
+    <h2 style="color:green">@ViewBag.retornoEnvio</h2>
+}

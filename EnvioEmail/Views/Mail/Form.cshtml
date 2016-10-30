@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+}
+
+<h2>Form</h2>
+
+<form class="container" method="post" action="Form">
+    <span class="form-control-static">Receiver Email:</span>
+    <input class="form-control" type="text" name="ReceiverEmail" />
+    <span class="form-control-static">Subject:</span>
+    <input class="form-control" type="text" name="Subject" />
+    <span class="form-control-static">Message:</span>
+    <input class="form-control" type="text" name="Message" />
+    <br />
+    <br />
+    @if (ViewBag.Error != "")
+    {
+        <h2 style="color:red">@ViewBag.Error</h2>
+    }
+    @if (ViewBag.retornoEnvio != "")
+    {
+        <h2>@ViewBag.retornoEnvio</h2>
+    }
+    <button class="btn btn-primary" type="submit">Send E-Mail</button>
+</form>
